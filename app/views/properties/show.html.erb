@@ -1,0 +1,22 @@
+<h1>閲覧</h1>
+<p id="notice"><%= notice %></p>
+  <table>
+    <p>物件名: <%= @property.name %></p>
+    <p>賃料: <%= @property.rent %>円</p>
+    <p>住所: <%= @property.address %></p>
+    <p>築年数: <%= @property.age %>年</p>
+    <p>備考: <%= @property.note %></p>
+  </table>
+<hr>
+  <% n = 0 %>
+  <% @property.stations.each_with_index do |station, i|%>
+  <% if station.name_station.present? %>
+  <h3>最寄駅<%= n += 1 %></h3>
+  <p>路線名: <%= station.name_station_line %></p>
+  <p>駅名: <%= station.name_station_line %></p>
+  <p>徒歩分数: <%= station.walk_minutes %>分</p>
+  <% end %>
+  <% end %>
+
+<%= link_to '編集', edit_property_path(@property) %> |
+<%= link_to '戻る', properties_path %>
